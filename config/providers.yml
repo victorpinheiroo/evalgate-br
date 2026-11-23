@@ -1,0 +1,32 @@
+# Free-tier providers. Concurrency is per model; retries back off on 429.
+# Model ids are "<provider>/<model>"; evalgate maps them to Inspect model names.
+databricks:
+  inspect_prefix: openai-api/databricks
+  max_connections: 2
+  max_retries: 8
+  models:
+    - databricks-meta-llama-3-3-70b-instruct
+    - databricks-llama-4-maverick
+    - databricks-meta-llama-3-1-8b-instruct
+    - databricks-gpt-oss-120b
+    - databricks-gpt-oss-20b
+    - databricks-qwen3-next-80b-a3b-instruct
+    - databricks-qwen35-122b-a10b
+    - databricks-gemma-3-12b
+
+google:
+  inspect_prefix: google
+  # The free tier's limits are not published and change; one request at a time is the safe default.
+  max_connections: 1
+  max_retries: 10
+  models:
+    - gemini-2.5-flash
+    - gemini-2.5-flash-lite
+
+# Inspect's built-in fake model: offline tests and CI smoke runs, no credentials.
+mockllm:
+  inspect_prefix: mockllm
+  max_connections: 4
+  max_retries: 0
+  models:
+    - model

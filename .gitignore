@@ -1,0 +1,21 @@
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+.ruff_cache/
+dist/
+build/
+*.egg-info/
+# secrets: GEMINI_API_KEY etc. live in .env, never in git
+.env
+.env.*
+!.env.example
+# local caches and run databases (published results are exported, not the raw db)
+.cache/
+runs/*.sqlite
+logs/
+
+# spike environments and logs
+spike/.venv-*/
+spike/logs-*/
+.deepeval/
